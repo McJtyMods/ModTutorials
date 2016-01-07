@@ -1,6 +1,7 @@
 tile.firstblock.name=First Block
 tile.simpletexturedblock.name=Simple Textured Block
 tile.multitexturedblock.name=Multi Textured Block
+tile.statetexturedblock.name=State Textured Block
 
 item.firstitem.name=First Item
 item.simpletextureditem.name=Simple Textured Item
