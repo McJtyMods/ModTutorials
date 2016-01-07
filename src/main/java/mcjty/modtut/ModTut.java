@@ -67,6 +67,13 @@ public class ModTut {
             ModBlocks.initModels();
             ModItems.initModels();
         }
+
+        @Override
+        public void init(FMLInitializationEvent e) {
+            super.init(e);
+
+            ModBlocks.initIsbm();
+        }
     }
 
     public static class ServerProxy extends CommonProxy {

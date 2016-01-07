@@ -1,6 +1,7 @@
 package mcjty.modtut;
 
 import mcjty.modtut.blocks.*;
+import mcjty.modtut.blocks.isbmblock.ISBMBlock;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -11,6 +12,7 @@ public class ModBlocks {
     public static MultiTexturedBlock multiTexturedBlock;
     public static StateTexturedBlock stateTexturedBlock;
     public static ModelBlock modelBlock;
+    public static ISBMBlock isbmBlock;
 
     public static void init() {
         firstBlock = new FirstBlock();
@@ -18,7 +20,10 @@ public class ModBlocks {
         multiTexturedBlock = new MultiTexturedBlock();
         stateTexturedBlock = new StateTexturedBlock();
         modelBlock = new ModelBlock();
+        isbmBlock = new ISBMBlock();
     }
+
+
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
@@ -26,6 +31,11 @@ public class ModBlocks {
         multiTexturedBlock.initModel();
         stateTexturedBlock.initModel();
         modelBlock.initModel();
+        isbmBlock.initModel();
     }
 
+    @SideOnly(Side.CLIENT)
+    public static void initIsbm() {
+        isbmBlock.initIsbm();
+    }
 }
