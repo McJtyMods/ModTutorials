@@ -42,6 +42,7 @@ public class ModTut {
         public void preInit(FMLPreInitializationEvent e) {
             // Initialization of blocks and items typically goes here:
             ModBlocks.init();
+            ModItems.init();
         }
 
         public void init(FMLInitializationEvent e) {
