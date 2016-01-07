@@ -1,0 +1,15 @@
+[
+{
+  "modid": "modtut",
+  "name": "Mod Tutorials",
+  "description": "Mod Tutorials",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["McJty"],
+  "credits": "McJty",
+  "logoFile": "",
+  "screenshots": []
+}
+]
