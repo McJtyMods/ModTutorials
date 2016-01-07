@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "modtut:blocks/faceFront",
+    "down": "modtut:blocks/faceDown",
+    "up": "modtut:blocks/faceUp",
+    "east": "modtut:blocks/faceLeft",
+    "west": "modtut:blocks/faceRight",
+    "north": "modtut:blocks/faceFront",
+    "south": "modtut:blocks/faceBack"
+  }
+}
