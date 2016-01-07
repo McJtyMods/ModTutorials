@@ -1,7 +1,10 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "modtut:statetexturedblock"
+    "model": "modtut:statetexturedblock",
+    "textures": {
+      "front": "modtut:blocks/statetexture_off"
+    }
   },
   "variants": {
     "normal": [{}],
@@ -16,7 +19,11 @@
     },
     "enabled": {
       "false": {},
-      "true": { "model": "modtut:statetexturedblock_enabled" }
+      "true": {
+        "textures": {
+          "front": "modtut:blocks/statetexture_on"
+        }
+      }
     }
   }
 }
