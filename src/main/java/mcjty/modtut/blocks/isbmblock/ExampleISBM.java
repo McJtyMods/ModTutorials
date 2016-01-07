@@ -122,14 +122,17 @@ public class ExampleISBM implements ISmartBlockModel {
         @Override
         public List<BakedQuad> getGeneralQuads() {
             List<BakedQuad> quads = new ArrayList<>();
-            Vec3 p000 = new Vec3(0, 0, 0);
-            Vec3 p100 = new Vec3(1, 0, 0);
-            Vec3 p001 = new Vec3(0, 0, 1);
-            Vec3 p101 = new Vec3(1, 0, 1);
-            Vec3 p010 = new Vec3(0, 1, 0);
-            Vec3 p110 = new Vec3(1, 1, 0);
-            Vec3 p011 = new Vec3(0, 1, 1);
-            Vec3 p111 = new Vec3(1, 1, 1);
+            double o = .3;
+            Vec3 p000 = new Vec3(o, o, o);
+            Vec3 p100 = new Vec3(1-o, o, o);
+            Vec3 p001 = new Vec3(o, o, 1-o);
+            Vec3 p101 = new Vec3(1-o, o, 1-o);
+            Vec3 p010 = new Vec3(o, 1-o, o);
+            Vec3 p110 = new Vec3(1-o, 1-o, o);
+            Vec3 p011 = new Vec3(o, 1-o, 1-o);
+            Vec3 p111 = new Vec3(1-o, 1-o, 1-o);
+
+            quads.add(createQuad(p010, p110, p111, p011));
 
             return quads;
         }
