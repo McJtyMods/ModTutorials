@@ -1,6 +1,7 @@
 package mcjty.modtut;
 
 
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -59,6 +60,9 @@ public class ModTut {
         @Override
         public void preInit(FMLPreInitializationEvent e) {
             super.preInit(e);
+
+            OBJLoader.instance.addDomain(MODID);
+
             // Typically initialization of models and such goes here:
             ModBlocks.initModels();
             ModItems.initModels();
