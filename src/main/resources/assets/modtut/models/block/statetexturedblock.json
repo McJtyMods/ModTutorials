@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "modtut:blocks/statetexture",
+    "down": "modtut:blocks/statetexture",
+    "up": "modtut:blocks/statetexture",
+    "east": "modtut:blocks/statetexture",
+    "west": "modtut:blocks/statetexture",
+    "north": "modtut:blocks/statetexture_off",
+    "south": "modtut:blocks/statetexture"
+  }
+}
