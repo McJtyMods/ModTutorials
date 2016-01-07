@@ -1,4 +1,5 @@
 tile.firstblock.name=First Block
+tile.simpletexturedblock.name=Simple Textured Block
 
 item.firstitem.name=First Item
 item.simpletextureditem.name=Simple Textured Item

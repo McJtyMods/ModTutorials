@@ -60,6 +60,7 @@ public class ModTut {
         public void preInit(FMLPreInitializationEvent e) {
             super.preInit(e);
             // Typically initialization of models and such goes here:
+            ModBlocks.initModels();
             ModItems.initModels();
         }
     }
