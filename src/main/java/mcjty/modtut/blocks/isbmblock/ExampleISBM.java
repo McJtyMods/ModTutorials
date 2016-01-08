@@ -81,7 +81,7 @@ public class ExampleISBM implements ISmartBlockModel {
         private final boolean down;
 
         public BakedModel(boolean north, boolean south, boolean west, boolean east, boolean up, boolean down) {
-            sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(ModTut.MODID + ":blocks/tank");
+            sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(ModTut.MODID + ":blocks/isbmtexture");
             this.north = north;
             this.south = south;
             this.west = west;
@@ -90,11 +90,11 @@ public class ExampleISBM implements ISmartBlockModel {
             this.down = down;
         }
 
-        private int[] vertexToInts(float x, float y, float z, float u, float v) {
+        private int[] vertexToInts(double x, double y, double z, float u, float v) {
             return new int[] {
-                    Float.floatToRawIntBits(x),
-                    Float.floatToRawIntBits(y),
-                    Float.floatToRawIntBits(z),
+                    Float.floatToRawIntBits((float) x),
+                    Float.floatToRawIntBits((float) y),
+                    Float.floatToRawIntBits((float) z),
                     -1,
                     Float.floatToRawIntBits(sprite.getInterpolatedU(u)),
                     Float.floatToRawIntBits(sprite.getInterpolatedV(v)),
@@ -107,10 +107,10 @@ public class ExampleISBM implements ISmartBlockModel {
             EnumFacing side = LightUtil.toSide((float) normal.xCoord, (float) normal.yCoord, (float) normal.zCoord);
 
             return new BakedQuad(Ints.concat(
-                    vertexToInts((float) v1.xCoord, (float) v1.yCoord, (float) v1.zCoord, 0, 0),
-                    vertexToInts((float) v2.xCoord, (float) v2.yCoord, (float) v2.zCoord, 0, 16),
-                    vertexToInts((float) v3.xCoord, (float) v3.yCoord, (float) v3.zCoord, 16, 16),
-                    vertexToInts((float) v4.xCoord, (float) v4.yCoord, (float) v4.zCoord, 16, 0)
+                    vertexToInts(v1.xCoord, v1.yCoord, v1.zCoord, 0, 0),
+                    vertexToInts(v2.xCoord, v2.yCoord, v2.zCoord, 0, 16),
+                    vertexToInts(v3.xCoord, v3.yCoord, v3.zCoord, 16, 16),
+                    vertexToInts(v4.xCoord, v4.yCoord, v4.zCoord, 16, 0)
             ), -1, side);
         }
 
@@ -122,17 +122,63 @@ public class ExampleISBM implements ISmartBlockModel {
         @Override
         public List<BakedQuad> getGeneralQuads() {
             List<BakedQuad> quads = new ArrayList<>();
-            double o = .3;
-            Vec3 p000 = new Vec3(o, o, o);
-            Vec3 p100 = new Vec3(1-o, o, o);
-            Vec3 p001 = new Vec3(o, o, 1-o);
-            Vec3 p101 = new Vec3(1-o, o, 1-o);
-            Vec3 p010 = new Vec3(o, 1-o, o);
-            Vec3 p110 = new Vec3(1-o, 1-o, o);
-            Vec3 p011 = new Vec3(o, 1-o, 1-o);
-            Vec3 p111 = new Vec3(1-o, 1-o, 1-o);
+            double o = .4;
 
-            quads.add(createQuad(p010, p110, p111, p011));
+            // For each side we either cap it off if there is no similar block adjacent on that side
+            // or else we extend so that we touch the adjacent block:
+
+            if (up) {
+                quads.add(createQuad(new Vec3(1-o, 1-o, o), new Vec3(1-o, 1, o), new Vec3(1-o, 1, 1-o), new Vec3(1-o, 1-o, 1-o)));
+                quads.add(createQuad(new Vec3(o, 1-o, 1-o), new Vec3(o, 1, 1-o), new Vec3(o, 1, o), new Vec3(o, 1-o, o)));
+                quads.add(createQuad(new Vec3(o, 1, o), new Vec3(1-o, 1, o), new Vec3(1-o, 1-o, o), new Vec3(o, 1-o, o)));
+                quads.add(createQuad(new Vec3(o, 1-o, 1-o), new Vec3(1-o, 1-o, 1-o), new Vec3(1-o, 1, 1-o), new Vec3(o, 1, 1-o)));
+            } else {
+                quads.add(createQuad(new Vec3(o, 1-o, 1-o), new Vec3(1-o, 1-o, 1-o), new Vec3(1-o, 1-o, o), new Vec3(o, 1-o, o)));
+            }
+
+            if (down) {
+                quads.add(createQuad(new Vec3(1-o, 0, o), new Vec3(1-o, o, o), new Vec3(1-o, o, 1-o), new Vec3(1-o, 0, 1-o)));
+                quads.add(createQuad(new Vec3(o, 0, 1-o), new Vec3(o, o, 1-o), new Vec3(o, o, o), new Vec3(o, 0, o)));
+                quads.add(createQuad(new Vec3(o, o, o), new Vec3(1-o, o, o), new Vec3(1-o, 0, o), new Vec3(o, 0, o)));
+                quads.add(createQuad(new Vec3(o, 0, 1-o), new Vec3(1-o, 0, 1-o), new Vec3(1-o, o, 1-o), new Vec3(o, o, 1-o)));
+            } else {
+                quads.add(createQuad(new Vec3(o, o, o), new Vec3(1-o, o, o), new Vec3(1-o, o, 1-o), new Vec3(o, o, 1-o)));
+            }
+
+            if (east) {
+                quads.add(createQuad(new Vec3(1-o, 1-o, 1-o), new Vec3(1, 1-o, 1-o), new Vec3(1, 1-o, o), new Vec3(1-o, 1-o, o)));
+                quads.add(createQuad(new Vec3(1-o, o, o), new Vec3(1, o, o), new Vec3(1, o, 1-o), new Vec3(1-o, o, 1-o)));
+                quads.add(createQuad(new Vec3(1-o, 1-o, o), new Vec3(1, 1-o, o), new Vec3(1, o, o), new Vec3(1-o, o, o)));
+                quads.add(createQuad(new Vec3(1-o, o, 1-o), new Vec3(1, o, 1-o), new Vec3(1, 1-o, 1-o), new Vec3(1-o, 1-o, 1-o)));
+            } else {
+                quads.add(createQuad(new Vec3(1-o, o, o), new Vec3(1-o, 1-o, o), new Vec3(1-o, 1-o, 1-o), new Vec3(1-o, o, 1-o)));
+            }
+
+            if (west) {
+                quads.add(createQuad(new Vec3(0, 1-o, 1-o), new Vec3(o, 1-o, 1-o), new Vec3(o, 1-o, o), new Vec3(0, 1-o, o)));
+                quads.add(createQuad(new Vec3(0, o, o), new Vec3(o, o, o), new Vec3(o, o, 1-o), new Vec3(0, o, 1-o)));
+                quads.add(createQuad(new Vec3(0, 1-o, o), new Vec3(o, 1-o, o), new Vec3(o, o, o), new Vec3(0, o, o)));
+                quads.add(createQuad(new Vec3(0, o, 1-o), new Vec3(o, o, 1-o), new Vec3(o, 1-o, 1-o), new Vec3(0, 1-o, 1-o)));
+            } else {
+                quads.add(createQuad(new Vec3(o, o, 1-o), new Vec3(o, 1-o, 1-o), new Vec3(o, 1-o, o), new Vec3(o, o, o)));
+            }
+
+            if (north) {
+                quads.add(createQuad(new Vec3(o, 1-o, o), new Vec3(1-o, 1-o, o), new Vec3(1-o, 1-o, 0), new Vec3(o, 1-o, 0)));
+                quads.add(createQuad(new Vec3(o, o, 0), new Vec3(1-o, o, 0), new Vec3(1-o, o, o), new Vec3(o, o, o)));
+                quads.add(createQuad(new Vec3(1-o, o, 0), new Vec3(1-o, 1-o, 0), new Vec3(1-o, 1-o, o), new Vec3(1-o, o, o)));
+                quads.add(createQuad(new Vec3(o, o, o), new Vec3(o, 1-o, o), new Vec3(o, 1-o, 0), new Vec3(o, o, 0)));
+            } else {
+                quads.add(createQuad(new Vec3(o, 1-o, o), new Vec3(1-o, 1-o, o), new Vec3(1-o, o, o), new Vec3(o, o, o)));
+            }
+            if (south) {
+                quads.add(createQuad(new Vec3(o, 1-o, 1), new Vec3(1-o, 1-o, 1), new Vec3(1-o, 1-o, 1-o), new Vec3(o, 1-o, 1-o)));
+                quads.add(createQuad(new Vec3(o, o, 1-o), new Vec3(1-o, o, 1-o), new Vec3(1-o, o, 1), new Vec3(o, o, 1)));
+                quads.add(createQuad(new Vec3(1-o, o, 1-o), new Vec3(1-o, 1-o, 1-o), new Vec3(1-o, 1-o, 1), new Vec3(1-o, o, 1)));
+                quads.add(createQuad(new Vec3(o, o, 1), new Vec3(o, 1-o, 1), new Vec3(o, 1-o, 1-o), new Vec3(o, o, 1-o)));
+            } else {
+                quads.add(createQuad(new Vec3(o, o, 1-o), new Vec3(1-o, o, 1-o), new Vec3(1-o, 1-o, 1-o), new Vec3(o, 1-o, 1-o)));
+            }
 
             return quads;
         }
