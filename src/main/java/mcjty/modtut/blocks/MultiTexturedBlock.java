@@ -21,7 +21,6 @@ public class MultiTexturedBlock extends Block {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
-
     public MultiTexturedBlock() {
         super(Material.rock);
         setUnlocalizedName("multitexturedblock");

@@ -4,6 +4,7 @@ tile.multitexturedblock.name=Multi Textured Block
 tile.statetexturedblock.name=State Textured Block
 tile.modelblock.name=Model Block
 tile.isbmblock.name=ISBM Block
+tile.datablock.name=Data Block
 
 item.firstitem.name=First Item
 item.simpletextureditem.name=Simple Textured Item
