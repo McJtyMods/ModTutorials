@@ -74,7 +74,7 @@ public class ModTut {
         public void init(FMLInitializationEvent e) {
             super.init(e);
 
-            ModBlocks.initIsbm();
+            ModBlocks.initItemModels();
         }
     }
 

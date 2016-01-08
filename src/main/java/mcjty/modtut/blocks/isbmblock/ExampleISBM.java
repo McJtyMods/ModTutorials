@@ -25,6 +25,9 @@ public class ExampleISBM implements ISmartBlockModel {
 
     @Override
     public IBakedModel handleBlockState(IBlockState state) {
+        // Called with the blockstate from our block. Here we get the values of the six properties and pass that to
+        // our baked model implementation.
+
         IExtendedBlockState extendedBlockState = (IExtendedBlockState) state;
         Boolean north = extendedBlockState.getValue(ISBMBlock.NORTH);
         Boolean south = extendedBlockState.getValue(ISBMBlock.SOUTH);

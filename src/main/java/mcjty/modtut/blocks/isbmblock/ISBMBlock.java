@@ -44,6 +44,7 @@ public class ISBMBlock extends Block {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
+        // To make sure that our ISBM model is chosen for all states we use this custom state mapper:
         StateMapperBase ignoreState = new StateMapperBase() {
             @Override
             protected ModelResourceLocation getModelResourceLocation(IBlockState iBlockState) {
@@ -54,7 +55,9 @@ public class ISBMBlock extends Block {
     }
 
     @SideOnly(Side.CLIENT)
-    public void initIsbm() {
+    public void initItemModel() {
+        // For our item model we want to use a normal json model. This has to be called in
+        // ClientProxy.init (not preInit) so that's why it is a separate method.
         Item itemBlock = GameRegistry.findItem(ModTut.MODID, "isbmblock");
         ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(getRegistryName(), "inventory");
         final int DEFAULT_ITEM_SUBTYPE = 0;
@@ -63,6 +66,7 @@ public class ISBMBlock extends Block {
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        // When our block is placed down we force a re-render of adjacent blocks to make sure their ISBM model is updated
         world.markBlockRangeForRenderUpdate(pos.add(-1, -1, -1), pos.add(1, 1, 1));
     }
 

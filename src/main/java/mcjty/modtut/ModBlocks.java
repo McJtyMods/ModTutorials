@@ -35,7 +35,7 @@ public class ModBlocks {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void initIsbm() {
-        isbmBlock.initIsbm();
+    public static void initItemModels() {
+        isbmBlock.initItemModel();
     }
 }
