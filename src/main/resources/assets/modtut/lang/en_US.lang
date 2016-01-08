@@ -5,6 +5,8 @@ tile.statetexturedblock.name=State Textured Block
 tile.modelblock.name=Model Block
 tile.isbmblock.name=ISBM Block
 tile.datablock.name=Data Block
+tile.blinkingblock.name=Blinking Block
+tile.blinkingblock_lit.name=Blinking Block
 
 item.firstitem.name=First Item
 item.simpletextureditem.name=Simple Textured Item

@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "modtut:blinkingblock",
+    "textures": {
+      "txt": "modtut:blocks/blinkingtexture"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "lit": {
+      "false": {},
+      "true": {
+        "textures": {
+          "txt": "modtut:blocks/blinkingtexture_on"
+        }
+      }
+    }
+  }
+}

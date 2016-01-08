@@ -1,6 +1,7 @@
 package mcjty.modtut;
 
 import mcjty.modtut.blocks.*;
+import mcjty.modtut.blocks.blinkingblock.BlinkingBlock;
 import mcjty.modtut.blocks.datablock.DataBlock;
 import mcjty.modtut.blocks.isbmblock.ISBMBlock;
 import net.minecraftforge.fml.relauncher.Side;
@@ -15,6 +16,7 @@ public class ModBlocks {
     public static ModelBlock modelBlock;
     public static ISBMBlock isbmBlock;
     public static DataBlock dataBlock;
+    public static BlinkingBlock blinkingBlock;
 
     public static void init() {
         firstBlock = new FirstBlock();
@@ -24,6 +26,7 @@ public class ModBlocks {
         modelBlock = new ModelBlock();
         isbmBlock = new ISBMBlock();
         dataBlock = new DataBlock();
+        blinkingBlock = new BlinkingBlock();
     }
 
 
@@ -36,6 +39,7 @@ public class ModBlocks {
         modelBlock.initModel();
         isbmBlock.initModel();
         dataBlock.initModel();
+        blinkingBlock.initModel();
     }
 
     @SideOnly(Side.CLIENT)
