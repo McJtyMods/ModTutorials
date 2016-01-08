@@ -46,11 +46,6 @@ public class BlinkingBlock extends Block implements ITileEntityProvider {
         return false;
     }
 
-//    @Override
-//    public boolean isBlockNormalCube() {
-//        return false;
-//    }
-
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new BlinkingTileEntity();
