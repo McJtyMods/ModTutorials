@@ -83,6 +83,8 @@ public class PedestalBlock extends Block implements ITileEntityProvider {
                     // Not possible. Throw item in the world
                     EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), stack);
                     world.spawnEntityInWorld(entityItem);
+                } else {
+                    player.openContainer.detectAndSendChanges();
                 }
             }
         }
