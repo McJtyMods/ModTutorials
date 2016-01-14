@@ -28,14 +28,11 @@ public class MultiModelItem extends Item {
 
         ModelBakery.registerItemVariants(this, blueModel, redModel);
 
-        ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
-            @Override
-            public ModelResourceLocation getModelLocation(ItemStack stack) {
-                if (isBlue(stack)) {
-                    return blueModel;
-                } else {
-                    return redModel;
-                }
+        ModelLoader.setCustomMeshDefinition(this, stack -> {
+            if (isBlue(stack)) {
+                return blueModel;
+            } else {
+                return redModel;
             }
         });
     }
