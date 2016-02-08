@@ -12,3 +12,6 @@ tile.pedestalblock.name=Pedestal Block
 item.firstitem.name=First Item
 item.simpletextureditem.name=Simple Textured Item
 item.multimodelitem.name=Multi Model Item
+
+key.categories.modtut=Mod Tutorials
+key.tutorial=Tutorial Key

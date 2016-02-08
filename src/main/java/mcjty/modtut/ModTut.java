@@ -1,6 +1,9 @@
 package mcjty.modtut;
 
 
+import mcjty.modtut.input.InputHandler;
+import mcjty.modtut.input.KeyBindings;
+import mcjty.modtut.network.PacketHandler;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -42,6 +45,10 @@ public class ModTut {
 
     public static class CommonProxy {
         public void preInit(FMLPreInitializationEvent e) {
+            // Initialize our packet handler. Make sure the name is
+            // 20 characters or less!
+            PacketHandler.registerMessages("modtut");
+
             // Initialization of blocks and items typically goes here:
             ModBlocks.init();
             ModItems.init();
@@ -73,6 +80,10 @@ public class ModTut {
         @Override
         public void init(FMLInitializationEvent e) {
             super.init(e);
+
+            // Initialize our input handler so we can listen to keys
+            MinecraftForge.EVENT_BUS.register(new InputHandler());
+            KeyBindings.init();
 
             ModBlocks.initItemModels();
         }
