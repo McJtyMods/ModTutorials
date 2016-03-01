@@ -18,7 +18,7 @@ public class ModTut {
 
     public static final String MODID = "modtut";
     public static final String MODNAME = "Mod tutorials";
-    public static final String MODVERSION = "0.0.1"
+    public static final String MODVERSION = "0.0.1";
 
     @SidedProxy
     public static CommonProxy proxy;
