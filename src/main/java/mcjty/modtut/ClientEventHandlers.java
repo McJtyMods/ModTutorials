@@ -11,10 +11,10 @@ public class ClientEventHandlers {
 
     @SubscribeEvent
     public void onModelBakeEvent(ModelBakeEvent event) {
-        Object object =  event.modelRegistry.getObject(ExampleISBM.modelResourceLocation);
+        Object object =  event.getModelRegistry().getObject(ExampleISBM.modelResourceLocation);
         if (object != null) {
             ExampleISBM customModel = new ExampleISBM();
-            event.modelRegistry.putObject(ExampleISBM.modelResourceLocation, customModel);
+            event.getModelRegistry().putObject(ExampleISBM.modelResourceLocation, customModel);
         }
     }
 

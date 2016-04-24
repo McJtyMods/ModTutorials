@@ -71,7 +71,7 @@ public class ModTut {
             super.preInit(e);
 
             MinecraftForge.EVENT_BUS.register(new ClientEventHandlers());
-            OBJLoader.instance.addDomain(MODID);
+            OBJLoader.INSTANCE.addDomain(MODID);
 
             // Typically initialization of models and such goes here:
             ModBlocks.initModels();

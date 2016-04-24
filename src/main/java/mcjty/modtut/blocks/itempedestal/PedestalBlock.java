@@ -4,14 +4,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -23,10 +25,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class PedestalBlock extends Block implements ITileEntityProvider {
 
     public PedestalBlock() {
-        super(Material.rock);
+        super(Material.ROCK);
         setUnlocalizedName("pedestalblock");
         setRegistryName("pedestalblock");
-        GameRegistry.registerBlock(this);
+        GameRegistry.register(this);
+        GameRegistry.register(new ItemBlock(this), getRegistryName());
         GameRegistry.registerTileEntity(PedestalTileEntity.class, "pedestalblock");
     }
 
@@ -43,17 +46,17 @@ public class PedestalBlock extends Block implements ITileEntityProvider {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         return false;
     }
 
     @Override
-    public boolean isBlockNormalCube() {
+    public boolean isBlockNormalCube(IBlockState blockState) {
         return false;
     }
 
     @Override
-    public boolean isOpaqueCube() {
+    public boolean isOpaqueCube(IBlockState blockState) {
         return false;
     }
 
@@ -62,14 +65,14 @@ public class PedestalBlock extends Block implements ITileEntityProvider {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
             PedestalTileEntity te = getTE(world, pos);
             if (te.getStack() == null) {
-                if (player.getHeldItem() != null) {
+                if (player.getHeldItem(hand) != null) {
                     // There is no item in the pedestal and the player is holding an item. We move that item
                     // to the pedestal
-                    te.setStack(player.getHeldItem());
+                    te.setStack(player.getHeldItem(hand));
                     player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
                     // Make sure the client knows about the changes in the player inventory
                     player.openContainer.detectAndSendChanges();

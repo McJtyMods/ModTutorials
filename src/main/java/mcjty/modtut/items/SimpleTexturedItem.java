@@ -1,6 +1,6 @@
 package mcjty.modtut.items;
 
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -12,7 +12,7 @@ public class SimpleTexturedItem extends Item {
     public SimpleTexturedItem() {
         setRegistryName("simpletextureditem");
         setUnlocalizedName("simpletextureditem");
-        GameRegistry.registerItem(this);
+        GameRegistry.register(this);
     }
 
     @SideOnly(Side.CLIENT)

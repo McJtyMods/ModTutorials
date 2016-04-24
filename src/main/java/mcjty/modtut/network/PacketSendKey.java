@@ -5,12 +5,12 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -32,8 +32,8 @@ public class PacketSendKey implements IMessage {
 
     public PacketSendKey() {
         // Calculate the position of the block we are looking at
-        MovingObjectPosition mouseOver = Minecraft.getMinecraft().objectMouseOver;
-        blockPos = mouseOver.getBlockPos();
+        RayTraceResult result = Minecraft.getMinecraft().objectMouseOver;
+        blockPos = result.getBlockPos();
     }
 
     public static class Handler implements IMessageHandler<PacketSendKey, IMessage> {
@@ -43,7 +43,7 @@ public class PacketSendKey implements IMessage {
             // youre 'handle' code is run on the main Minecraft thread. 'onMessage' itself
             // is called on the networking thread so it is not safe to do a lot of things
             // here.
-            MinecraftServer.getServer().addScheduledTask(() -> handle(message, ctx));
+            FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
             return null;
         }
 
@@ -52,7 +52,7 @@ public class PacketSendKey implements IMessage {
             EntityPlayerMP playerEntity = ctx.getServerHandler().playerEntity;
             World world = playerEntity.worldObj;
             Block block = world.getBlockState(message.blockPos).getBlock();
-            playerEntity.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Hit block: " + block.getRegistryName()));
+            playerEntity.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Hit block: " + block.getRegistryName()));
         }
     }
 }
