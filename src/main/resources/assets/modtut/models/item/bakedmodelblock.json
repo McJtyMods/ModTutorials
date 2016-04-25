@@ -1,5 +1,5 @@
 {
-  "parent": "modtut:block/isbmblock",
+  "parent": "modtut:block/bakedmodelblock",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

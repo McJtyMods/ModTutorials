@@ -1,4 +1,4 @@
-package mcjty.modtut.blocks.isbmblock;
+package mcjty.modtut.blocks.bakedmodel;
 
 import net.minecraftforge.common.property.IUnlistedProperty;
 

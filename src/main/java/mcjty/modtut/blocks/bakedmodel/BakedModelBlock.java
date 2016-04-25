@@ -1,4 +1,4 @@
-package mcjty.modtut.blocks.isbmblock;
+package mcjty.modtut.blocks.bakedmodel;
 
 import mcjty.modtut.ModBlocks;
 import mcjty.modtut.ModTut;
@@ -15,6 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -26,7 +27,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ISBMBlock extends Block {
+public class BakedModelBlock extends Block {
 
     // Properties that indicate if there is the same block in a certain direction.
     public static final UnlistedPropertyBlockAvailable NORTH = new UnlistedPropertyBlockAvailable("north");
@@ -36,10 +37,10 @@ public class ISBMBlock extends Block {
     public static final UnlistedPropertyBlockAvailable UP = new UnlistedPropertyBlockAvailable("up");
     public static final UnlistedPropertyBlockAvailable DOWN = new UnlistedPropertyBlockAvailable("down");
 
-    public ISBMBlock() {
+    public BakedModelBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("isbmblock");
-        setRegistryName("isbmblock");
+        setUnlocalizedName("bakedmodelblock");
+        setRegistryName("bakedmodelblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
@@ -50,7 +51,7 @@ public class ISBMBlock extends Block {
         StateMapperBase ignoreState = new StateMapperBase() {
             @Override
             protected ModelResourceLocation getModelResourceLocation(IBlockState iBlockState) {
-                return ExampleISBM.modelResourceLocation;
+                return ExampleBakedModel.modelResourceLocation;
             }
         };
         ModelLoader.setCustomStateMapper(this, ignoreState);
@@ -60,7 +61,7 @@ public class ISBMBlock extends Block {
     public void initItemModel() {
         // For our item model we want to use a normal json model. This has to be called in
         // ClientProxy.init (not preInit) so that's why it is a separate method.
-        Item itemBlock = GameRegistry.findItem(ModTut.MODID, "isbmblock");
+        Item itemBlock = Item.REGISTRY.getObject(new ResourceLocation(ModTut.MODID, "bakedmodelblock"));
         ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(getRegistryName(), "inventory");
         final int DEFAULT_ITEM_SUBTYPE = 0;
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlock, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
@@ -116,7 +117,7 @@ public class ISBMBlock extends Block {
     }
 
     private boolean isSameBlock(IBlockAccess world, BlockPos pos) {
-        return world.getBlockState(pos).getBlock() == ModBlocks.isbmBlock;
+        return world.getBlockState(pos).getBlock() == ModBlocks.bakedModelBlock;
     }
 
 }

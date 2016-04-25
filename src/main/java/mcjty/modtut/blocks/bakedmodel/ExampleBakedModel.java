@@ -1,4 +1,4 @@
-package mcjty.modtut.blocks.isbmblock;
+package mcjty.modtut.blocks.bakedmodel;
 
 import com.google.common.primitives.Ints;
 import mcjty.modtut.ModTut;
@@ -15,9 +15,9 @@ import net.minecraftforge.common.property.IExtendedBlockState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExampleISBM implements IBakedModel {
+public class ExampleBakedModel implements IBakedModel {
 
-    public static final ModelResourceLocation modelResourceLocation = new ModelResourceLocation(ModTut.MODID + ":isbmblock");
+    public static final ModelResourceLocation modelResourceLocation = new ModelResourceLocation(ModTut.MODID + ":bakedmodelblock");
 
     private TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(ModTut.MODID + ":blocks/isbmtexture");
 
@@ -48,12 +48,12 @@ public class ExampleISBM implements IBakedModel {
     @Override
     public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
         IExtendedBlockState extendedBlockState = (IExtendedBlockState) state;
-        Boolean north = extendedBlockState.getValue(ISBMBlock.NORTH);
-        Boolean south = extendedBlockState.getValue(ISBMBlock.SOUTH);
-        Boolean west = extendedBlockState.getValue(ISBMBlock.WEST);
-        Boolean east = extendedBlockState.getValue(ISBMBlock.EAST);
-        Boolean up = extendedBlockState.getValue(ISBMBlock.UP);
-        Boolean down = extendedBlockState.getValue(ISBMBlock.DOWN);
+        Boolean north = extendedBlockState.getValue(BakedModelBlock.NORTH);
+        Boolean south = extendedBlockState.getValue(BakedModelBlock.SOUTH);
+        Boolean west = extendedBlockState.getValue(BakedModelBlock.WEST);
+        Boolean east = extendedBlockState.getValue(BakedModelBlock.EAST);
+        Boolean up = extendedBlockState.getValue(BakedModelBlock.UP);
+        Boolean down = extendedBlockState.getValue(BakedModelBlock.DOWN);
         List<BakedQuad> quads = new ArrayList<>();
         double o = .4;
 

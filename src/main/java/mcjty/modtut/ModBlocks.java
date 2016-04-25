@@ -3,7 +3,7 @@ package mcjty.modtut;
 import mcjty.modtut.blocks.*;
 import mcjty.modtut.blocks.blinkingblock.BlinkingBlock;
 import mcjty.modtut.blocks.datablock.DataBlock;
-import mcjty.modtut.blocks.isbmblock.ISBMBlock;
+import mcjty.modtut.blocks.bakedmodel.BakedModelBlock;
 import mcjty.modtut.blocks.itempedestal.PedestalBlock;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -15,7 +15,7 @@ public class ModBlocks {
     public static MultiTexturedBlock multiTexturedBlock;
     public static StateTexturedBlock stateTexturedBlock;
     public static ModelBlock modelBlock;
-    public static ISBMBlock isbmBlock;
+    public static BakedModelBlock bakedModelBlock;
     public static DataBlock dataBlock;
     public static BlinkingBlock blinkingBlock;
     public static PedestalBlock pedestalBlock;
@@ -26,7 +26,7 @@ public class ModBlocks {
         multiTexturedBlock = new MultiTexturedBlock();
         stateTexturedBlock = new StateTexturedBlock();
         modelBlock = new ModelBlock();
-        isbmBlock = new ISBMBlock();
+        bakedModelBlock = new BakedModelBlock();
         dataBlock = new DataBlock();
         blinkingBlock = new BlinkingBlock();
         pedestalBlock = new PedestalBlock();
@@ -38,7 +38,7 @@ public class ModBlocks {
         multiTexturedBlock.initModel();
         stateTexturedBlock.initModel();
         modelBlock.initModel();
-        isbmBlock.initModel();
+        bakedModelBlock.initModel();
         dataBlock.initModel();
         blinkingBlock.initModel();
         pedestalBlock.initModel();
@@ -46,6 +46,6 @@ public class ModBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void initItemModels() {
-        isbmBlock.initItemModel();
+        bakedModelBlock.initItemModel();
     }
 }

@@ -1,6 +1,6 @@
 package mcjty.modtut;
 
-import mcjty.modtut.blocks.isbmblock.ExampleISBM;
+import mcjty.modtut.blocks.bakedmodel.ExampleBakedModel;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -11,10 +11,10 @@ public class ClientEventHandlers {
 
     @SubscribeEvent
     public void onModelBakeEvent(ModelBakeEvent event) {
-        Object object =  event.getModelRegistry().getObject(ExampleISBM.modelResourceLocation);
+        Object object =  event.getModelRegistry().getObject(ExampleBakedModel.modelResourceLocation);
         if (object != null) {
-            ExampleISBM customModel = new ExampleISBM();
-            event.getModelRegistry().putObject(ExampleISBM.modelResourceLocation, customModel);
+            ExampleBakedModel customModel = new ExampleBakedModel();
+            event.getModelRegistry().putObject(ExampleBakedModel.modelResourceLocation, customModel);
         }
     }
 
