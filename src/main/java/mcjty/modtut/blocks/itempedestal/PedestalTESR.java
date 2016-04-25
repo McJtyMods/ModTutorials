@@ -31,7 +31,7 @@ public class PedestalTESR extends TileEntitySpecialRenderer<PedestalTileEntity> 
         // for rendering
         if (bakedModel == null) {
             try {
-                model = ModelLoaderRegistry.getModel(new ResourceLocation(ModTut.MODID, "block/crystal_inside.obj"));
+                model = ModelLoaderRegistry.getModel(new ResourceLocation(ModTut.MODID, "block/pedestalhandles.obj"));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
