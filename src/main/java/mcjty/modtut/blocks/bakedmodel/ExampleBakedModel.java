@@ -57,8 +57,6 @@ public class ExampleBakedModel implements IBakedModel {
         List<BakedQuad> quads = new ArrayList<>();
         double o = .4;
 
-        getParticleTexture();
-
         // For each side we either cap it off if there is no similar block adjacent on that side
         // or else we extend so that we touch the adjacent block:
 
@@ -140,9 +138,6 @@ public class ExampleBakedModel implements IBakedModel {
 
     @Override
     public TextureAtlasSprite getParticleTexture() {
-        if (sprite == null) {
-            sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(ModTut.MODID + ":blocks/isbmtexture");
-        }
         return sprite;
     }
 
