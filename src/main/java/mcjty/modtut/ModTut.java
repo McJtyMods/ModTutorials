@@ -1,9 +1,11 @@
 package mcjty.modtut;
 
 
+import mcjty.modtut.blocks.bakedmodel.BakedModelLoader;
 import mcjty.modtut.input.InputHandler;
 import mcjty.modtut.input.KeyBindings;
 import mcjty.modtut.network.PacketHandler;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -72,6 +74,7 @@ public class ModTut {
 
             MinecraftForge.EVENT_BUS.register(new ClientEventHandlers());
             OBJLoader.INSTANCE.addDomain(MODID);
+            ModelLoaderRegistry.registerLoader(new BakedModelLoader());
 
             // Typically initialization of models and such goes here:
             ModBlocks.initModels();

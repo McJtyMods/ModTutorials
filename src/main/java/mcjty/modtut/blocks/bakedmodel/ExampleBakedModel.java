@@ -1,15 +1,18 @@
 package mcjty.modtut.blocks.bakedmodel;
 
+import com.google.common.base.Function;
 import mcjty.modtut.ModTut;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 import net.minecraftforge.client.model.pipeline.UnpackedBakedQuad;
+import net.minecraftforge.common.model.IModelState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 
 import java.util.ArrayList;
@@ -21,9 +24,16 @@ public class ExampleBakedModel implements IBakedModel {
 
     private TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(ModTut.MODID + ":blocks/isbmtexture");
 
+    private VertexFormat format;
+
+    public ExampleBakedModel(IModelState state, VertexFormat format, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
+        this.format = format;
+    }
+
+
     private void putVertex(UnpackedBakedQuad.Builder builder, EnumFacing side, double x, double y, double z, float u, float v) {
-        for (int e = 0; e < DefaultVertexFormats.ITEM.getElementCount(); e++) {
-            switch (DefaultVertexFormats.ITEM.getElement(e).getUsage()) {
+        for (int e = 0; e < format.getElementCount(); e++) {
+            switch (format.getElement(e).getUsage()) {
                 case POSITION:
                     float[] data = new float[]{(float)x, (float)y, (float)z, 1};
                     builder.put(e, data);
@@ -32,7 +42,7 @@ public class ExampleBakedModel implements IBakedModel {
                     builder.put(e, 0xffffffff);
                     break;
                 case UV:
-                    if (DefaultVertexFormats.ITEM.getElement(e).getIndex() == 0) {
+                    if (format.getElement(e).getIndex() == 0) {
                         u = sprite.getInterpolatedU(u);
                         v = sprite.getInterpolatedV(v);
                         builder.put(e, u, v, 0f, 1f);
@@ -52,7 +62,7 @@ public class ExampleBakedModel implements IBakedModel {
         Vec3d normal = v1.subtract(v2).crossProduct(v3.subtract(v2));
         EnumFacing side = LightUtil.toSide((float) normal.xCoord, (float) normal.yCoord, (float) normal.zCoord);
 
-        UnpackedBakedQuad.Builder builder = new UnpackedBakedQuad.Builder(DefaultVertexFormats.ITEM);
+        UnpackedBakedQuad.Builder builder = new UnpackedBakedQuad.Builder(format);
         builder.setTexture(sprite);
         putVertex(builder, side, v1.xCoord, v1.yCoord, v1.zCoord, 0, 0);
         putVertex(builder, side, v2.xCoord, v2.yCoord, v2.zCoord, 0, 16);
