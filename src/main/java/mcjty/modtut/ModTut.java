@@ -72,7 +72,6 @@ public class ModTut {
         public void preInit(FMLPreInitializationEvent e) {
             super.preInit(e);
 
-            MinecraftForge.EVENT_BUS.register(new ClientEventHandlers());
             OBJLoader.INSTANCE.addDomain(MODID);
             ModelLoaderRegistry.registerLoader(new BakedModelLoader());
 

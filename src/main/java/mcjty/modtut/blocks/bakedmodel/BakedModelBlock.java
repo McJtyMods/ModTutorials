@@ -51,7 +51,7 @@ public class BakedModelBlock extends Block {
         StateMapperBase ignoreState = new StateMapperBase() {
             @Override
             protected ModelResourceLocation getModelResourceLocation(IBlockState iBlockState) {
-                return ExampleBakedModel.modelResourceLocation;
+                return ExampleBakedModel.BAKED_MODEL;
             }
         };
         ModelLoader.setCustomStateMapper(this, ignoreState);

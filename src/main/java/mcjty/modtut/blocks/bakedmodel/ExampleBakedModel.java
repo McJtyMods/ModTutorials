@@ -3,43 +3,41 @@ package mcjty.modtut.blocks.bakedmodel;
 import com.google.common.base.Function;
 import mcjty.modtut.ModTut;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.client.model.pipeline.LightUtil;
 import net.minecraftforge.client.model.pipeline.UnpackedBakedQuad;
 import net.minecraftforge.common.model.IModelState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ExampleBakedModel implements IBakedModel {
 
-    public static final ModelResourceLocation modelResourceLocation = new ModelResourceLocation(ModTut.MODID + ":bakedmodelblock");
+    public static final ModelResourceLocation BAKED_MODEL = new ModelResourceLocation(ModTut.MODID + ":bakedmodelblock");
 
-    private TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(ModTut.MODID + ":blocks/isbmtexture");
-
+    private TextureAtlasSprite sprite;
     private VertexFormat format;
 
     public ExampleBakedModel(IModelState state, VertexFormat format, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
         this.format = format;
+        sprite = bakedTextureGetter.apply(new ResourceLocation(ModTut.MODID, "blocks/isbmtexture"));
     }
 
 
-    private void putVertex(UnpackedBakedQuad.Builder builder, EnumFacing side, double x, double y, double z, float u, float v) {
+    private void putVertex(UnpackedBakedQuad.Builder builder, Vec3d normal, double x, double y, double z, float u, float v) {
         for (int e = 0; e < format.getElementCount(); e++) {
             switch (format.getElement(e).getUsage()) {
                 case POSITION:
-                    float[] data = new float[]{(float)x, (float)y, (float)z, 1};
-                    builder.put(e, data);
+                    builder.put(e, (float)x, (float)y, (float)z, 1.0f);
                     break;
                 case COLOR:
-                    builder.put(e, 0xffffffff);
+                    builder.put(e, 1.0f, 1.0f, 1.0f, 1.0f);
                     break;
                 case UV:
                     if (format.getElement(e).getIndex() == 0) {
@@ -49,7 +47,7 @@ public class ExampleBakedModel implements IBakedModel {
                         break;
                     }
                 case NORMAL:
-                    builder.put(e, side.getFrontOffsetX(), side.getFrontOffsetY(), side.getFrontOffsetZ(), 0f);
+                    builder.put(e, (float) normal.xCoord, (float) normal.yCoord, (float) normal.zCoord, 0f);
                     break;
                 default:
                     builder.put(e);
@@ -60,19 +58,24 @@ public class ExampleBakedModel implements IBakedModel {
 
     private BakedQuad createQuad(Vec3d v1, Vec3d v2, Vec3d v3, Vec3d v4, TextureAtlasSprite sprite) {
         Vec3d normal = v1.subtract(v2).crossProduct(v3.subtract(v2));
-        EnumFacing side = LightUtil.toSide((float) normal.xCoord, (float) normal.yCoord, (float) normal.zCoord);
 
         UnpackedBakedQuad.Builder builder = new UnpackedBakedQuad.Builder(format);
         builder.setTexture(sprite);
-        putVertex(builder, side, v1.xCoord, v1.yCoord, v1.zCoord, 0, 0);
-        putVertex(builder, side, v2.xCoord, v2.yCoord, v2.zCoord, 0, 16);
-        putVertex(builder, side, v3.xCoord, v3.yCoord, v3.zCoord, 16, 16);
-        putVertex(builder, side, v4.xCoord, v4.yCoord, v4.zCoord, 16, 0);
+        putVertex(builder, normal, v1.xCoord, v1.yCoord, v1.zCoord, 0, 0);
+        putVertex(builder, normal, v2.xCoord, v2.yCoord, v2.zCoord, 0, 16);
+        putVertex(builder, normal, v3.xCoord, v3.yCoord, v3.zCoord, 16, 16);
+        putVertex(builder, normal, v4.xCoord, v4.yCoord, v4.zCoord, 16, 0);
         return builder.build();
     }
 
     @Override
     public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
+
+        if (side != null) {
+            return Collections.emptyList();
+        }
+
+
         IExtendedBlockState extendedBlockState = (IExtendedBlockState) state;
         Boolean north = extendedBlockState.getValue(BakedModelBlock.NORTH);
         Boolean south = extendedBlockState.getValue(BakedModelBlock.SOUTH);
