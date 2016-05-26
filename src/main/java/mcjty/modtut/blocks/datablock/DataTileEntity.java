@@ -19,6 +19,10 @@ public class DataTileEntity extends TileEntity {
         return counter;
     }
 
+    public int getCounter() {
+        return counter;
+    }
+
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);

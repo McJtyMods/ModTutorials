@@ -48,7 +48,7 @@ minecraft {
 dependencies {
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
     deobfCompile "mezz.jei:jei_1.9.4:3.4.0.202"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.1-7"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.2-8"
 }
 
 processResources

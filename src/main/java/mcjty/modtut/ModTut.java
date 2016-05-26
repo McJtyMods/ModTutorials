@@ -2,6 +2,7 @@ package mcjty.modtut;
 
 
 import mcjty.modtut.blocks.bakedmodel.BakedModelLoader;
+import mcjty.modtut.compat.MainCompatHandler;
 import mcjty.modtut.input.InputHandler;
 import mcjty.modtut.input.KeyBindings;
 import mcjty.modtut.network.PacketHandler;
@@ -55,6 +56,10 @@ public class ModTut {
             // Initialization of blocks and items typically goes here:
             ModBlocks.init();
             ModItems.init();
+
+            MainCompatHandler.registerWaila();
+            MainCompatHandler.registerTOP();
+
         }
 
         public void init(FMLInitializationEvent e) {

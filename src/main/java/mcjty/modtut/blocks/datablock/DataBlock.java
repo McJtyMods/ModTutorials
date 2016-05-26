@@ -1,5 +1,9 @@
 package mcjty.modtut.blocks.datablock;
 
+import mcjty.modtut.compat.top.TOPInfoProvider;
+import mcjty.theoneprobe.api.IProbeHitData;
+import mcjty.theoneprobe.api.IProbeInfo;
+import mcjty.theoneprobe.api.ProbeMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -7,8 +11,11 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -24,7 +31,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DataBlock extends Block implements ITileEntityProvider {
+public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProvider {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -40,6 +47,20 @@ public class DataBlock extends Block implements ITileEntityProvider {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
+
+    @Override
+    public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState blockState, IProbeHitData data) {
+        TileEntity te = world.getTileEntity(data.getPos());
+        if (te instanceof DataTileEntity) {
+            DataTileEntity dataTileEntity = (DataTileEntity) te;
+            probeInfo.horizontal()
+                    .item(new ItemStack(Items.CLOCK))
+                    .text(TextFormatting.GREEN + "Counter: " + dataTileEntity.getCounter());
+            probeInfo.horizontal(probeInfo.defaultLayoutStyle().borderColor(0xffff0000))
+                    .entity(EntityList.getEntityStringFromClass(EntityHorse.class))
+                    .progress(dataTileEntity.getCounter() % 10, 10, probeInfo.defaultProgressStyle().suffix("%"));
+        }
     }
 
     @Override
