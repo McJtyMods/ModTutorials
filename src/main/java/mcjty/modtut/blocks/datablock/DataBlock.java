@@ -59,7 +59,7 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
                     .text(TextFormatting.GREEN + "Counter: " + dataTileEntity.getCounter());
             probeInfo.horizontal(probeInfo.defaultLayoutStyle().borderColor(0xffff0000))
                     .entity(EntityList.getEntityStringFromClass(EntityHorse.class))
-                    .progress(dataTileEntity.getCounter() % 10, 10, probeInfo.defaultProgressStyle().suffix("%"));
+                    .progress(dataTileEntity.getCounter() % 100, 100, probeInfo.defaultProgressStyle().suffix("%"));
         }
     }
 
