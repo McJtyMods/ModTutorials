@@ -41,7 +41,7 @@ public class StateTexturedBlock extends Block {
     }
 
     @Override
-    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock) {
+    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn) {
         int powered = world.isBlockIndirectlyGettingPowered(pos);
         world.setBlockState(pos, state.withProperty(ENABLED, powered > 0), 3);
     }
