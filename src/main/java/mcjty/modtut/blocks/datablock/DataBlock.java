@@ -1,9 +1,12 @@
 package mcjty.modtut.blocks.datablock;
 
 import mcjty.modtut.compat.top.TOPInfoProvider;
+import mcjty.modtut.compat.waila.WailaInfoProvider;
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;
 import mcjty.theoneprobe.api.ProbeMode;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -31,7 +34,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProvider {
+import java.util.List;
+
+public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProvider, WailaInfoProvider {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -47,6 +52,16 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
+
+    @Override
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        TileEntity te = accessor.getTileEntity();
+        if (te instanceof DataTileEntity) {
+            DataTileEntity dataTileEntity = (DataTileEntity) te;
+            currenttip.add(TextFormatting.GRAY + "Counter: " + dataTileEntity.getCounter());
+        }
+        return currenttip;
     }
 
     @Override
