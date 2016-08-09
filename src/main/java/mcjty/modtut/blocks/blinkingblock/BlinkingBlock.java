@@ -30,7 +30,7 @@ public class BlinkingBlock extends Block implements ITileEntityProvider {
         setRegistryName("blinkingblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
-        GameRegistry.registerTileEntity(BlinkingTileEntity.class, "blinkingblock");
+        GameRegistry.registerTileEntity(BlinkingTileEntity.class, ModTut.MODID + "_blinkingblock");
     }
 
     @SideOnly(Side.CLIENT)

@@ -47,7 +47,7 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
         setRegistryName("datablock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
-        GameRegistry.registerTileEntity(DataTileEntity.class, "datablock");
+        GameRegistry.registerTileEntity(DataTileEntity.class, ModTut.MODID + "_datablock");
     }
 
     @SideOnly(Side.CLIENT)
