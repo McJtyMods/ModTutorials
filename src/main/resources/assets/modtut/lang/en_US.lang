@@ -8,6 +8,7 @@ tile.modtut.datablock.name=Data Block
 tile.modtut.blinkingblock.name=Blinking Block
 tile.modtut.blinkingblock_lit.name=Blinking Block
 tile.modtut.pedestalblock.name=Pedestal Block
+tile.modtut.testcontainerblock.name=Test Container Block
 
 item.modtut.firstitem.name=First Item
 item.modtut.simpletextureditem.name=Simple Textured Item

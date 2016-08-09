@@ -5,6 +5,7 @@ import mcjty.modtut.blocks.blinkingblock.BlinkingBlock;
 import mcjty.modtut.blocks.datablock.DataBlock;
 import mcjty.modtut.blocks.bakedmodel.BakedModelBlock;
 import mcjty.modtut.blocks.itempedestal.PedestalBlock;
+import mcjty.modtut.blocks.testcontainer.TestContainerBlock;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -19,6 +20,7 @@ public class ModBlocks {
     public static DataBlock dataBlock;
     public static BlinkingBlock blinkingBlock;
     public static PedestalBlock pedestalBlock;
+    public static TestContainerBlock testContainerBlock;
 
     public static void init() {
         firstBlock = new FirstBlock();
@@ -30,6 +32,7 @@ public class ModBlocks {
         dataBlock = new DataBlock();
         blinkingBlock = new BlinkingBlock();
         pedestalBlock = new PedestalBlock();
+        testContainerBlock = new TestContainerBlock();
     }
 
     @SideOnly(Side.CLIENT)
@@ -42,6 +45,7 @@ public class ModBlocks {
         dataBlock.initModel();
         blinkingBlock.initModel();
         pedestalBlock.initModel();
+        testContainerBlock.initModel();
     }
 
     @SideOnly(Side.CLIENT)
