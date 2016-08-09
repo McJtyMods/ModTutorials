@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,7 +19,7 @@ public class ModelBlock extends Block {
 
     public ModelBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("modelblock");
+        setUnlocalizedName(ModTut.MODID + ".modelblock");
         setRegistryName("modelblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

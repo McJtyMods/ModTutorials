@@ -39,7 +39,7 @@ public class BakedModelBlock extends Block {
 
     public BakedModelBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("bakedmodelblock");
+        setUnlocalizedName(ModTut.MODID + ".bakedmodelblock");
         setRegistryName("bakedmodelblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

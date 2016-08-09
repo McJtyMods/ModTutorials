@@ -1,17 +1,17 @@
-tile.firstblock.name=First Block
-tile.simpletexturedblock.name=Simple Textured Block
-tile.multitexturedblock.name=Multi Textured Block
-tile.statetexturedblock.name=State Textured Block
-tile.modelblock.name=Model Block
-tile.bakedmodelblock.name=Baked Model Block
-tile.datablock.name=Data Block
-tile.blinkingblock.name=Blinking Block
-tile.blinkingblock_lit.name=Blinking Block
-tile.pedestalblock.name=Pedestal Block
+tile.modtut.firstblock.name=First Block
+tile.modtut.simpletexturedblock.name=Simple Textured Block
+tile.modtut.multitexturedblock.name=Multi Textured Block
+tile.modtut.statetexturedblock.name=State Textured Block
+tile.modtut.modelblock.name=Model Block
+tile.modtut.bakedmodelblock.name=Baked Model Block
+tile.modtut.datablock.name=Data Block
+tile.modtut.blinkingblock.name=Blinking Block
+tile.modtut.blinkingblock_lit.name=Blinking Block
+tile.modtut.pedestalblock.name=Pedestal Block
 
-item.firstitem.name=First Item
-item.simpletextureditem.name=Simple Textured Item
-item.multimodelitem.name=Multi Model Item
+item.modtut.firstitem.name=First Item
+item.modtut.simpletextureditem.name=Simple Textured Item
+item.modtut.multimodelitem.name=Multi Model Item
 
 key.categories.modtut=Mod Tutorials
 key.tutorial=Tutorial Key

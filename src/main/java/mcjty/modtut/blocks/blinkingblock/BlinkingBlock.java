@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks.blinkingblock;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -25,7 +26,7 @@ public class BlinkingBlock extends Block implements ITileEntityProvider {
 
     public BlinkingBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("blinkingblock");
+        setUnlocalizedName(ModTut.MODID + ".blinkingblock");
         setRegistryName("blinkingblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

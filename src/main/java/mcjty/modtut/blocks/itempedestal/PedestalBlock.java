@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks.itempedestal;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -26,7 +27,7 @@ public class PedestalBlock extends Block implements ITileEntityProvider {
 
     public PedestalBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("pedestalblock");
+        setUnlocalizedName(ModTut.MODID + ".pedestalblock");
         setRegistryName("pedestalblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

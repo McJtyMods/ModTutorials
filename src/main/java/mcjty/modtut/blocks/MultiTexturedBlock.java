@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -24,7 +25,7 @@ public class MultiTexturedBlock extends Block {
 
     public MultiTexturedBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("multitexturedblock");
+        setUnlocalizedName(ModTut.MODID + ".multitexturedblock");
         setRegistryName("multitexturedblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -27,7 +28,7 @@ public class StateTexturedBlock extends Block {
 
     public StateTexturedBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("statetexturedblock");
+        setUnlocalizedName(ModTut.MODID + ".statetexturedblock");
         setRegistryName("statetexturedblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

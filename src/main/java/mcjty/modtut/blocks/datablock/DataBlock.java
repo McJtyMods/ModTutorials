@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks.datablock;
 
+import mcjty.modtut.ModTut;
 import mcjty.modtut.compat.top.TOPInfoProvider;
 import mcjty.modtut.compat.waila.WailaInfoProvider;
 import mcjty.theoneprobe.api.IProbeHitData;
@@ -42,7 +43,7 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
 
     public DataBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("datablock");
+        setUnlocalizedName(ModTut.MODID + ".datablock");
         setRegistryName("datablock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

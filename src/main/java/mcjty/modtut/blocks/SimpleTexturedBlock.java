@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -14,7 +15,7 @@ public class SimpleTexturedBlock extends Block {
 
     public SimpleTexturedBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("simpletexturedblock");
+        setUnlocalizedName(ModTut.MODID + ".simpletexturedblock");
         setRegistryName("simpletexturedblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

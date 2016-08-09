@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -9,7 +10,7 @@ public class FirstBlock extends Block {
 
     public FirstBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("firstblock");
+        setUnlocalizedName(ModTut.MODID + ".firstblock");
         setRegistryName("firstblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

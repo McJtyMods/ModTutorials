@@ -1,5 +1,6 @@
 package mcjty.modtut.items;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +20,7 @@ public class MultiModelItem extends Item {
 
     public MultiModelItem() {
         setRegistryName("multimodelitem");
-        setUnlocalizedName("multimodelitem");
+        setUnlocalizedName(ModTut.MODID + ".multimodelitem");
         GameRegistry.register(this);
     }
 
