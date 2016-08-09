@@ -31,7 +31,7 @@ public class PedestalBlock extends Block implements ITileEntityProvider {
         setRegistryName("pedestalblock");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
-        GameRegistry.registerTileEntity(PedestalTileEntity.class, "pedestalblock");
+        GameRegistry.registerTileEntity(PedestalTileEntity.class, ModTut.MODID + "_pedestalblock");
     }
 
     @SideOnly(Side.CLIENT)
