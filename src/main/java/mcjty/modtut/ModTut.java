@@ -57,6 +57,7 @@ public class ModTut {
             // Initialization of blocks and items typically goes here:
             ModBlocks.init();
             ModItems.init();
+            ModEntities.init();
 
             MainCompatHandler.registerWaila();
             MainCompatHandler.registerTOP();
@@ -72,7 +73,6 @@ public class ModTut {
         }
     }
 
-
     public static class ClientProxy extends CommonProxy {
         @Override
         public void preInit(FMLPreInitializationEvent e) {
@@ -84,6 +84,7 @@ public class ModTut {
             // Typically initialization of models and such goes here:
             ModBlocks.initModels();
             ModItems.initModels();
+            ModEntities.initModels();
         }
 
         @Override
