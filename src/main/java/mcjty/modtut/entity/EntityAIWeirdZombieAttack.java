@@ -2,6 +2,9 @@ package mcjty.modtut.entity;
 
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 
+/**
+ * Custom AI attack class to support raising of the arms when the zombie attacks
+ */
 public class EntityAIWeirdZombieAttack extends EntityAIAttackMelee {
     private int raiseArmTicks;
     private EntityWeirdZombie weirdZombie;

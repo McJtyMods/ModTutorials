@@ -43,6 +43,7 @@ public class EntityWeirdZombie extends EntityMob {
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
+        // Here we set various attributes for our mob. Like maximum health, armor, speed, ...
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.13D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
@@ -81,7 +82,9 @@ public class EntityWeirdZombie extends EntityMob {
     public boolean attackEntityAsMob(Entity entityIn) {
         if (super.attackEntityAsMob(entityIn)) {
             if (entityIn instanceof EntityLivingBase) {
-                ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200));
+                // This zombie gives health boost and regeneration when it attacks
+                ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 200));
+                ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200));
             }
             return true;
         } else {
@@ -102,6 +105,6 @@ public class EntityWeirdZombie extends EntityMob {
 
     @Override
     public int getMaxSpawnedInChunk() {
-        return 3;
+        return 5;
     }
 }
