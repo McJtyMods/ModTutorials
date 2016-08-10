@@ -12,9 +12,12 @@ public class TestContainerTileEntity extends TileEntity {
 
     public static final int SIZE = 9;
 
+    // This item handler will hold our nine inventory slots
     private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
         @Override
         protected void onContentsChanged(int slot) {
+            // We need to tell the tile entity that something has changed so
+            // that the chest contents is persisted
             TestContainerTileEntity.this.markDirty();
         }
     };
@@ -33,6 +36,7 @@ public class TestContainerTileEntity extends TileEntity {
     }
 
     public boolean canInteractWith(EntityPlayer playerIn) {
+        // If we are too far away from this tile entity you cannot use it
         return !isInvalid() && playerIn.getDistanceSq(pos.add(0.5D, 0.5D, 0.5D)) <= 64D;
     }
 
