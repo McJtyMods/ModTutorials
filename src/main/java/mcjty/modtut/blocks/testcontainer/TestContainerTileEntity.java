@@ -18,17 +18,13 @@ public class TestContainerTileEntity extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        NBTBase items = compound.getTag("items");
-        if (items != null) {
-            itemStackHandler.deserializeNBT((NBTTagCompound) items);
-        }
+        itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("items"));
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        NBTTagCompound items = itemStackHandler.serializeNBT();
-        compound.setTag("items", items);
+        compound.setTag("items", itemStackHandler.serializeNBT());
         return compound;
     }
 
