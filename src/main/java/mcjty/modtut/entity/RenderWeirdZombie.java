@@ -16,6 +16,8 @@ public class RenderWeirdZombie extends RenderLiving<EntityWeirdZombie> {
     public static final Factory FACTORY = new Factory();
 
     public RenderWeirdZombie(RenderManager rendermanagerIn) {
+        // We use the vanilla zombie model here and we simply
+        // retexture it. Of course you can make your own model
         super(rendermanagerIn, new ModelZombie(), 0.5F);
     }
 
