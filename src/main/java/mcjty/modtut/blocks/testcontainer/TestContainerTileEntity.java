@@ -1,7 +1,6 @@
 package mcjty.modtut.blocks.testcontainer;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -13,7 +12,12 @@ public class TestContainerTileEntity extends TileEntity {
 
     public static final int SIZE = 9;
 
-    private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE);
+    private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            TestContainerTileEntity.this.markDirty();
+        }
+    };
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
