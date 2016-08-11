@@ -2,6 +2,7 @@ package mcjty.modtut;
 
 
 import mcjty.modtut.blocks.bakedmodel.BakedModelLoader;
+import mcjty.modtut.commands.TeleportCommand;
 import mcjty.modtut.compat.MainCompatHandler;
 import mcjty.modtut.input.InputHandler;
 import mcjty.modtut.input.KeyBindings;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.Logger;
 
@@ -48,6 +50,12 @@ public class ModTut {
         proxy.postInit(e);
     }
 
+    @Mod.EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new TeleportCommand());
+    }
+
+
     public static class CommonProxy {
         public void preInit(FMLPreInitializationEvent e) {
             // Initialize our packet handler. Make sure the name is
@@ -58,6 +66,7 @@ public class ModTut {
             ModBlocks.init();
             ModItems.init();
             ModEntities.init();
+            ModDimensions.init();
 
             MainCompatHandler.registerWaila();
             MainCompatHandler.registerTOP();
