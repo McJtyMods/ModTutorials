@@ -11,6 +11,7 @@ public class Config {
 
     public static boolean isThisAGoodTutorial = true;
     public static String yourRealName = "Steve";
+    public static int dimensionId = 100;
 
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
@@ -35,6 +36,6 @@ public class Config {
 
     private static void initDimensionConfig(Configuration cfg) {
         cfg.addCustomCategoryComment(CATEGORY_DIMENSIONS, "Dimension configuration");
-
+        dimensionId = cfg.getInt("dimensionId", CATEGORY_DIMENSIONS, dimensionId, -1000, 1000, "The Id to use for the dimension");
     }
 }
