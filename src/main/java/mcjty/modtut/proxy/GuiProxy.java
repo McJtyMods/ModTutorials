@@ -1,4 +1,4 @@
-package mcjty.modtut;
+package mcjty.modtut.proxy;
 
 import mcjty.modtut.blocks.testcontainer.TestContainer;
 import mcjty.modtut.blocks.testcontainer.TestContainerGui;
