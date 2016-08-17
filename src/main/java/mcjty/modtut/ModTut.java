@@ -3,6 +3,7 @@ package mcjty.modtut;
 
 import mcjty.modtut.commands.TeleportCommand;
 import mcjty.modtut.proxy.CommonProxy;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -25,6 +26,9 @@ public class ModTut {
     public static ModTut instance;
 
     public static Logger logger;
+
+    // Config instance
+    public static Configuration config;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){

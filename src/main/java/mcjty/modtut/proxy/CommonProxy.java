@@ -3,13 +3,21 @@ package mcjty.modtut.proxy;
 import mcjty.modtut.*;
 import mcjty.modtut.compat.MainCompatHandler;
 import mcjty.modtut.network.PacketHandler;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import java.io.File;
+
 public class CommonProxy {
+
     public void preInit(FMLPreInitializationEvent e) {
+        File directory = e.getModConfigurationDirectory();
+        ModTut.config = new Configuration(new File(directory.getPath(), "modtut.cfg"));
+        Config.readConfig();
+
         // Initialize our packet handler. Make sure the name is
         // 20 characters or less!
         PacketHandler.registerMessages("modtut");
@@ -30,6 +38,8 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent e) {
-
+        if (ModTut.config.hasChanged()) {
+            ModTut.config.save();
+        }
     }
 }
