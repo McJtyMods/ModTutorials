@@ -21,7 +21,9 @@ public class CustomTeleporter extends Teleporter {
     }
 
     private final WorldServer worldServer;
-    private double x, y, z;
+    private double x;
+    private double y;
+    private double z;
 
     @Override
     public void placeInPortal(@Nonnull Entity entity, float rotationYaw) {
