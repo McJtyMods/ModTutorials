@@ -13,9 +13,12 @@ import java.io.File;
 
 public class CommonProxy {
 
+    // Config instance
+    public static Configuration config;
+
     public void preInit(FMLPreInitializationEvent e) {
         File directory = e.getModConfigurationDirectory();
-        ModTut.config = new Configuration(new File(directory.getPath(), "modtut.cfg"));
+        config = new Configuration(new File(directory.getPath(), "modtut.cfg"));
         Config.readConfig();
 
         // Initialize our packet handler. Make sure the name is
@@ -38,8 +41,8 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent e) {
-        if (ModTut.config.hasChanged()) {
-            ModTut.config.save();
+        if (config.hasChanged()) {
+            config.save();
         }
     }
 }

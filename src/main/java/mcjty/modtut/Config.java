@@ -1,5 +1,6 @@
 package mcjty.modtut;
 
+import mcjty.modtut.proxy.CommonProxy;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Level;
 
@@ -12,7 +13,7 @@ public class Config {
     public static String yourRealName = "Steve";
 
     public static void readConfig() {
-        Configuration cfg = ModTut.config;
+        Configuration cfg = CommonProxy.config;
         try {
             cfg.load();
             initGeneralConfig(cfg);
