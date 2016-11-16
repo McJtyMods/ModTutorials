@@ -50,9 +50,9 @@ public class PacketSendKey implements IMessage {
         private void handle(PacketSendKey message, MessageContext ctx) {
             // This code is run on the server side. So you can do server-side calculations here
             EntityPlayerMP playerEntity = ctx.getServerHandler().playerEntity;
-            World world = playerEntity.worldObj;
+            World world = playerEntity.getEntityWorld();
             Block block = world.getBlockState(message.blockPos).getBlock();
-            playerEntity.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Hit block: " + block.getRegistryName()));
+            playerEntity.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Hit block: " + block.getRegistryName()), false);
         }
     }
 }

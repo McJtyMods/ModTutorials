@@ -41,8 +41,9 @@ public class StateTexturedBlock extends Block {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
+
     @Override
-    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos p_189540_5_) {
         int powered = world.isBlockIndirectlyGettingPowered(pos);
         world.setBlockState(pos, state.withProperty(ENABLED, powered > 0), 3);
     }

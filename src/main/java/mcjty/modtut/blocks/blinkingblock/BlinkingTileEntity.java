@@ -30,7 +30,7 @@ public class BlinkingTileEntity extends TileEntity implements ITickable {
     public void update() {
         // This method is called every tick (20 times per second normally)
 
-        if (worldObj.isRemote) {
+        if (getWorld().isRemote) {
             // We only do something on the client so we don't have to bother about client-server communication.
             // The effect that we want to have (blinking the block) is client-side as well.
             updateCounter();
@@ -38,7 +38,7 @@ public class BlinkingTileEntity extends TileEntity implements ITickable {
             if (counter <= 0) {
                 lit = !lit;
                 counter = 400;      // This is 20 seconds. Rate increases if more mods are near
-                worldObj.markBlockRangeForRenderUpdate(getPos(), getPos());
+                getWorld().markBlockRangeForRenderUpdate(getPos(), getPos());
             }
         }
     }
@@ -47,7 +47,7 @@ public class BlinkingTileEntity extends TileEntity implements ITickable {
         // Don't count the entities every tick. That would be a bit slow.
         delayCounter--;
         if (delayCounter <= 0) {
-            List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos().add(-10, -10, -10), getPos().add(10, 10, 10)));
+            List<EntityLivingBase> list = getWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos().add(-10, -10, -10), getPos().add(10, 10, 10)));
             delayCounter = 10;
             lastCount = list.size();
         }

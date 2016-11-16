@@ -23,7 +23,8 @@ repositories {
         url "http://mobiusstrip.eu/maven"
     }
     maven { // JEI
-        url "http://dvs1.progwml6.com/files/maven"
+//        url "http://dvs1.progwml6.com/files/maven"
+        url "http://104.168.20.187/files/maven"
     }
     maven { // TOP
         name 'tterrag maven'
@@ -39,16 +40,16 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 minecraft {
-    version = "1.10.2-12.18.1.2048"
+    version = "1.11-13.19.0.2129-1.11.x"
     runDir = "run"
-    mappings = "snapshot_20160801"
+    mappings = "snapshot_20161115"
     useDepAts = true
 }
 
 dependencies {
-    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
-    deobfCompile "mezz.jei:jei_1.10.2:3.7.8.234"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.0.13-26"
+//    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+    deobfCompile "mezz.jei:jei_1.11:4.0.0.188"
+//    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.0.13-26"
 }
 
 processResources
