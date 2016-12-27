@@ -19,6 +19,6 @@ public class TestWorldProvider extends WorldProvider {
 
     @Override
     public IChunkGenerator createChunkGenerator() {
-        return new TestChunkGenerator(worldObj);
+        return new TestChunkGenerator(world);
     }
 }

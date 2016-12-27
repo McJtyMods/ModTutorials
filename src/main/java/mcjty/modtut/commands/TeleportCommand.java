@@ -26,19 +26,19 @@ public class TeleportCommand extends CommandBase {
 
     @Override
     @Nonnull
-    public String getCommandName() {
+    public String getName() {
         return "tp";
     }
 
     @Override
     @Nonnull
-    public String getCommandUsage(@Nonnull ICommandSender sender) {
+    public String getUsage(@Nonnull ICommandSender sender) {
         return "tp <id>";
     }
 
     @Override
     @Nonnull
-    public List<String> getCommandAliases() {
+    public List<String> getAliases() {
         return aliases;
     }
 
@@ -52,7 +52,7 @@ public class TeleportCommand extends CommandBase {
         try {
             dim = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Error parsing dimension!"));
+            sender.sendMessage(new TextComponentString(TextFormatting.RED + "Error parsing dimension!"));
             return;
         }
 
@@ -67,8 +67,7 @@ public class TeleportCommand extends CommandBase {
     }
 
     @Override
-    @Nonnull
-    public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos) {
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         return Collections.emptyList();
     }
 }

@@ -75,8 +75,8 @@ public class TestContainer extends Container {
                 return null;
             }
 
-            if (itemstack1.func_190926_b()) {
-                slot.putStack(ItemStack.field_190927_a);
+            if (itemstack1.isEmpty()) {
+                slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
             }

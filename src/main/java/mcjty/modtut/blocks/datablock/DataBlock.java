@@ -96,7 +96,7 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
                 } else {
                     counter = getTE(world, pos).increment();
                 }
-                player.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Counter: " + counter), false);
+                player.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Counter: " + counter), false);
             }
         }
         // Return true also on the client to make sure that MC knows we handled this and will not try to place

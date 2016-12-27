@@ -52,7 +52,7 @@ public class PacketSendKey implements IMessage {
             EntityPlayerMP playerEntity = ctx.getServerHandler().playerEntity;
             World world = playerEntity.getEntityWorld();
             Block block = world.getBlockState(message.blockPos).getBlock();
-            playerEntity.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Hit block: " + block.getRegistryName()), false);
+            playerEntity.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Hit block: " + block.getRegistryName()), false);
         }
     }
 }

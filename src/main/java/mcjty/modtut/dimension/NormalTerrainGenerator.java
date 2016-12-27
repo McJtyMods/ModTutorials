@@ -40,7 +40,7 @@ public class NormalTerrainGenerator {
         this.biomeWeights = new float[25];
         for (int j = -2; j <= 2; ++j) {
             for (int k = -2; k <= 2; ++k) {
-                float f = 10.0F / MathHelper.sqrt_float((j * j + k * k) + 0.2F);
+                float f = 10.0F / MathHelper.sqrt((j * j + k * k) + 0.2F);
                 this.biomeWeights[j + 2 + (k + 2) * 5] = f;
             }
         }
@@ -149,7 +149,7 @@ public class NormalTerrainGenerator {
                     double d7 = this.minLimitRegion[l] / 512.0D;
                     double d8 = this.maxLimitRegion[l] / 512.0D;
                     double d9 = (this.mainNoiseRegion[l] / 10.0D + 1.0D) / 2.0D;
-                    double d10 = MathHelper.denormalizeClamp(d7, d8, d9) - d6;
+                    double d10 = MathHelper.clamp(d7, d8, d9) - d6;
 
                     if (j2 > 29) {
                         double d11 = ((j2 - 29) / 3.0F);
