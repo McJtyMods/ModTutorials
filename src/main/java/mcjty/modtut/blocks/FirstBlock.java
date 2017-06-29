@@ -12,7 +12,5 @@ public class FirstBlock extends Block {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".firstblock");
         setRegistryName("firstblock");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 }

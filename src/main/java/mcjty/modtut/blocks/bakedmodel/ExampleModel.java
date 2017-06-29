@@ -1,6 +1,5 @@
 package mcjty.modtut.blocks.bakedmodel;
 
-import com.google.common.base.Function;
 import com.google.common.collect.ImmutableSet;
 import mcjty.modtut.ModTut;
 import net.minecraft.client.renderer.block.model.IBakedModel;
@@ -13,8 +12,10 @@ import net.minecraftforge.common.model.TRSRTransformation;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.function.Function;
 
 public class ExampleModel implements IModel {
+
     @Override
     public IBakedModel bake(IModelState state, VertexFormat format, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
         return new ExampleBakedModel(state, format, bakedTextureGetter);

@@ -21,7 +21,6 @@ public class MultiModelItem extends Item {
     public MultiModelItem() {
         setRegistryName("multimodelitem");
         setUnlocalizedName(ModTut.MODID + ".multimodelitem");
-        GameRegistry.register(this);
     }
 
     @SideOnly(Side.CLIENT)

@@ -43,7 +43,7 @@ public class PedestalTESR extends TileEntitySpecialRenderer<PedestalTileEntity> 
 
 
     @Override
-    public void renderTileEntityAt(PedestalTileEntity te, double x, double y, double z, float partialTicks, int destroyStage) {
+    public void render(PedestalTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         GlStateManager.pushAttrib();
         GlStateManager.pushMatrix();
 

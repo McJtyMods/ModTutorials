@@ -1,39 +1,46 @@
 package mcjty.modtut;
 
 import mcjty.modtut.blocks.*;
+import mcjty.modtut.blocks.bakedmodel.BakedModelBlock;
 import mcjty.modtut.blocks.blinkingblock.BlinkingBlock;
 import mcjty.modtut.blocks.datablock.DataBlock;
-import mcjty.modtut.blocks.bakedmodel.BakedModelBlock;
 import mcjty.modtut.blocks.itempedestal.PedestalBlock;
 import mcjty.modtut.blocks.testcontainer.TestContainerBlock;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModBlocks {
 
+    @GameRegistry.ObjectHolder("modtut:firstblock")
     public static FirstBlock firstBlock;
+
+    @GameRegistry.ObjectHolder("modtut:simpletexturedblock")
     public static SimpleTexturedBlock simpleTexturedBlock;
+
+    @GameRegistry.ObjectHolder("modtut:multitexturedblock")
     public static MultiTexturedBlock multiTexturedBlock;
-    public static StateTexturedBlock stateTexturedBlock;
+
+    @GameRegistry.ObjectHolder("modtut:modelblock")
     public static ModelBlock modelBlock;
+
+    @GameRegistry.ObjectHolder("modtut:bakedmodelblock")
     public static BakedModelBlock bakedModelBlock;
+
+    @GameRegistry.ObjectHolder("modtut:datablock")
     public static DataBlock dataBlock;
+
+    @GameRegistry.ObjectHolder("modtut:blinkingblock")
     public static BlinkingBlock blinkingBlock;
+
+    @GameRegistry.ObjectHolder("modtut:pedestalblock")
     public static PedestalBlock pedestalBlock;
+
+    @GameRegistry.ObjectHolder("modtut:testcontainerblock")
     public static TestContainerBlock testContainerBlock;
 
-    public static void init() {
-        firstBlock = new FirstBlock();
-        simpleTexturedBlock = new SimpleTexturedBlock();
-        multiTexturedBlock = new MultiTexturedBlock();
-        stateTexturedBlock = new StateTexturedBlock();
-        modelBlock = new ModelBlock();
-        bakedModelBlock = new BakedModelBlock();
-        dataBlock = new DataBlock();
-        blinkingBlock = new BlinkingBlock();
-        pedestalBlock = new PedestalBlock();
-        testContainerBlock = new TestContainerBlock();
-    }
+    @GameRegistry.ObjectHolder("modtut:statetexturedblock")
+    public static StateTexturedBlock stateTexturedBlock;
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {

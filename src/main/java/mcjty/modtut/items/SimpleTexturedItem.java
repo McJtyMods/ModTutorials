@@ -13,7 +13,6 @@ public class SimpleTexturedItem extends Item {
     public SimpleTexturedItem() {
         setRegistryName("simpletextureditem");
         setUnlocalizedName(ModTut.MODID + ".simpletextureditem");
-        GameRegistry.register(this);
     }
 
     @SideOnly(Side.CLIENT)

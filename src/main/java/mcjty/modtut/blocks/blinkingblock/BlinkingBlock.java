@@ -9,14 +9,12 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -28,9 +26,6 @@ public class BlinkingBlock extends Block implements ITileEntityProvider {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".blinkingblock");
         setRegistryName("blinkingblock");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
-        GameRegistry.registerTileEntity(BlinkingTileEntity.class, ModTut.MODID + "_blinkingblock");
     }
 
     @SideOnly(Side.CLIENT)
