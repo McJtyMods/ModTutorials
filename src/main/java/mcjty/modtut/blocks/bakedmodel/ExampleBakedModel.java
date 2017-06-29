@@ -57,7 +57,7 @@ public class ExampleBakedModel implements IBakedModel {
     }
 
     private BakedQuad createQuad(Vec3d v1, Vec3d v2, Vec3d v3, Vec3d v4, TextureAtlasSprite sprite) {
-        Vec3d normal = v1.subtract(v2).crossProduct(v3.subtract(v2));
+        Vec3d normal = v3.subtract(v2).crossProduct(v1.subtract(v2)).normalize();
 
         UnpackedBakedQuad.Builder builder = new UnpackedBakedQuad.Builder(format);
         builder.setTexture(sprite);
