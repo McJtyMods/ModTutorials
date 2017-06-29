@@ -64,12 +64,12 @@ public class PedestalBlock extends Block implements ITileEntityProvider {
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
             PedestalTileEntity te = getTE(world, pos);
-            if (te.getStack() == null) {
-                if (player.getHeldItem(hand) != null) {
+            if (te.getStack().isEmpty()) {
+                if (!player.getHeldItem(hand).isEmpty()) {
                     // There is no item in the pedestal and the player is holding an item. We move that item
                     // to the pedestal
                     te.setStack(player.getHeldItem(hand));
-                    player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+                    player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
                     // Make sure the client knows about the changes in the player inventory
                     player.openContainer.detectAndSendChanges();
                 }
@@ -77,7 +77,7 @@ public class PedestalBlock extends Block implements ITileEntityProvider {
                 // There is a stack in the pedestal. In this case we remove it and try to put it in the
                 // players inventory if there is room
                 ItemStack stack = te.getStack();
-                te.setStack(null);
+                te.setStack(ItemStack.EMPTY);
                 if (!player.inventory.addItemStackToInventory(stack)) {
                     // Not possible. Throw item in the world
                     EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY()+1, pos.getZ(), stack);

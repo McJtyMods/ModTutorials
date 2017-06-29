@@ -1,12 +1,12 @@
 {
   "parent": "block/cube",
   "textures": {
-    "particle": "modtut:blocks/faceFront",
-    "down": "modtut:blocks/faceDown",
-    "up": "modtut:blocks/faceUp",
-    "east": "modtut:blocks/faceLeft",
-    "west": "modtut:blocks/faceRight",
-    "north": "modtut:blocks/faceFront",
-    "south": "modtut:blocks/faceBack"
+    "particle": "modtut:blocks/facefront",
+    "down": "modtut:blocks/facedown",
+    "up": "modtut:blocks/faceup",
+    "east": "modtut:blocks/faceleft",
+    "west": "modtut:blocks/faceright",
+    "north": "modtut:blocks/facefront",
+    "south": "modtut:blocks/faceback"
   }
 }

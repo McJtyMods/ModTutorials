@@ -66,7 +66,7 @@ public class CommonProxy {
     }
 
     @SubscribeEvent
-    public void registerBlocks(RegistryEvent.Register<Block> event) {
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().register(new StateTexturedBlock());
         event.getRegistry().register(new BlinkingBlock());
         event.getRegistry().register(new FirstBlock());
@@ -85,7 +85,7 @@ public class CommonProxy {
     }
 
     @SubscribeEvent
-    public void registerItems(RegistryEvent.Register<Item> event) {
+    public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(new FirstItem());
         event.getRegistry().register(new SimpleTexturedItem());
         event.getRegistry().register(new MultiModelItem());
