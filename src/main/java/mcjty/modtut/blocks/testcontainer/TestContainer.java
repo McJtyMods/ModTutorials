@@ -60,7 +60,7 @@ public class TestContainer extends Container {
     @Nullable
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack itemstack = null;
+        ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
@@ -69,10 +69,10 @@ public class TestContainer extends Container {
 
             if (index < TestContainerTileEntity.SIZE) {
                 if (!this.mergeItemStack(itemstack1, TestContainerTileEntity.SIZE, this.inventorySlots.size(), true)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
             } else if (!this.mergeItemStack(itemstack1, 0, TestContainerTileEntity.SIZE, false)) {
-                return null;
+                return ItemStack.EMPTY;
             }
 
             if (itemstack1.isEmpty()) {
