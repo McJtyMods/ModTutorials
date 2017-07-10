@@ -22,4 +22,11 @@ public class TestContainerGui extends GuiContainer {
         mc.getTextureManager().bindTexture(background);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
     }
+
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        super.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        super.renderHoveredToolTip(mouseX, mouseY);
+    }
 }
