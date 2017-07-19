@@ -1,7 +1,6 @@
 package mcjty.modtut.blocks.itempedestal;
 
 import mcjty.modtut.ModBlocks;
-import mcjty.modtut.ModTut;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
