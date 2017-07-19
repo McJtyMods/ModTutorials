@@ -3,6 +3,11 @@ package mcjty.modtut.blocks.datablock;
 import mcjty.modtut.ModTut;
 import mcjty.modtut.compat.top.TOPInfoProvider;
 import mcjty.modtut.compat.waila.WailaInfoProvider;
+import mcjty.theoneprobe.api.IProbeHitData;
+import mcjty.theoneprobe.api.IProbeInfo;
+import mcjty.theoneprobe.api.ProbeMode;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -25,12 +30,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import mcjty.theoneprobe.api.IProbeHitData;
-import mcjty.theoneprobe.api.IProbeInfo;
-import mcjty.theoneprobe.api.ProbeMode;
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
 
 import java.util.List;
 
@@ -68,7 +67,7 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
                     .item(new ItemStack(Items.CLOCK))
                     .text(TextFormatting.GREEN + "Counter: " + dataTileEntity.getCounter());
             probeInfo.horizontal(probeInfo.defaultLayoutStyle().borderColor(0xffff0000))
-//                    .entity(EntityList.getEntityStringFromClass(EntityHorse.class))
+                    .entity("minecraft:horse")
                     .progress(dataTileEntity.getCounter() % 100, 100, probeInfo.defaultProgressStyle().suffix("%"));
         }
     }
