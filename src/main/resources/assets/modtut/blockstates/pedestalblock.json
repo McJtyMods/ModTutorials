@@ -1,11 +1,11 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "custom": { "flip-v": true },
-    "model": "modtut:pedestal.obj"
+    "custom": { "flip-v": true }
   },
   "variants": {
-    "normal": [{}],
-    "inventory": [{}]
+    "is_handles=false": { "model": "modtut:pedestal.obj" },
+    "is_handles=true": { "model": "modtut:pedestalhandles.obj" },
+    "inventory": { "model": "modtut:pedestal.obj" }
   }
 }

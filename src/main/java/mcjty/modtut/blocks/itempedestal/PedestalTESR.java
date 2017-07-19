@@ -1,47 +1,23 @@
 package mcjty.modtut.blocks.itempedestal;
 
+import mcjty.modtut.ModBlocks;
 import mcjty.modtut.ModTut;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.IModel;
-import net.minecraftforge.client.model.ModelLoaderRegistry;
-import net.minecraftforge.common.model.TRSRTransformation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class PedestalTESR extends TileEntitySpecialRenderer<PedestalTileEntity> {
-
-    private IModel model;
-    private IBakedModel bakedModel;
-
-    private IBakedModel getBakedModel() {
-        // Since we cannot bake in preInit() we do lazy baking of the model as soon as we need it
-        // for rendering
-        if (bakedModel == null) {
-            try {
-                model = ModelLoaderRegistry.getModel(new ResourceLocation(ModTut.MODID, "block/pedestalhandles.obj"));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            bakedModel = model.bake(TRSRTransformation.identity(), DefaultVertexFormats.ITEM,
-                    location -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString()));
-        }
-        return bakedModel;
-    }
-
-
     @Override
     public void render(PedestalTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         GlStateManager.pushAttrib();
@@ -82,13 +58,13 @@ public class PedestalTESR extends TileEntitySpecialRenderer<PedestalTileEntity> 
         GlStateManager.translate(-te.getPos().getX(), -te.getPos().getY(), -te.getPos().getZ());
 
         Tessellator tessellator = Tessellator.getInstance();
-        tessellator.getBuffer().begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
-        Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelRenderer().renderModel(
-                world,
-                getBakedModel(),
-                world.getBlockState(te.getPos()),
-                te.getPos(),
-                Tessellator.getInstance().getBuffer(), false);
+        BufferBuilder bufferBuilder = tessellator.getBuffer();
+        bufferBuilder.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
+
+        IBlockState state = ModBlocks.pedestalBlock.getDefaultState().withProperty(PedestalBlock.IS_HANDLES, true);
+        BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
+        IBakedModel model = dispatcher.getModelForState(state);
+        dispatcher.getBlockModelRenderer().renderModel(world, model, state, te.getPos(), bufferBuilder, true);
         tessellator.draw();
 
         RenderHelper.enableStandardItemLighting();
