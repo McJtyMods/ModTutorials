@@ -24,7 +24,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -32,6 +32,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+
+import static mcjty.theoneprobe.api.IProbeInfo.ENDLOC;
+import static mcjty.theoneprobe.api.IProbeInfo.STARTLOC;
 
 public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProvider, WailaInfoProvider {
 
@@ -65,7 +68,7 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
             DataTileEntity dataTileEntity = (DataTileEntity) te;
             probeInfo.horizontal()
                     .item(new ItemStack(Items.CLOCK))
-                    .text(TextFormatting.GREEN + "Counter: " + dataTileEntity.getCounter());
+                    .text(TextFormatting.GREEN + STARTLOC + "message.modtut.counter" + ENDLOC + " " + dataTileEntity.getCounter());
             probeInfo.horizontal(probeInfo.defaultLayoutStyle().borderColor(0xffff0000))
                     .entity("minecraft:horse")
                     .progress(dataTileEntity.getCounter() % 100, 100, probeInfo.defaultProgressStyle().suffix("%"));
@@ -93,7 +96,9 @@ public class DataBlock extends Block implements ITileEntityProvider, TOPInfoProv
                 } else {
                     counter = getTE(world, pos).increment();
                 }
-                player.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Counter: " + counter), false);
+                TextComponentTranslation component = new TextComponentTranslation("message.modtut.counter_par", Integer.toString(counter));
+                component.getStyle().setColor(TextFormatting.GREEN);
+                player.sendStatusMessage(component, false);
             }
         }
         // Return true also on the client to make sure that MC knows we handled this and will not try to place

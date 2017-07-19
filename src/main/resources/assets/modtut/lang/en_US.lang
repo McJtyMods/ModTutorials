@@ -14,6 +14,9 @@ item.modtut.firstitem.name=First Item
 item.modtut.simpletextureditem.name=Simple Textured Item
 item.modtut.multimodelitem.name=Multi Model Item
 
+message.modtut.counter=Counter:
+message.modtut.counter_par=Counter: %s
+
 entity.modtut.WeirdZombie.name=Weird Zombie
 
 key.categories.modtut=Mod Tutorials
