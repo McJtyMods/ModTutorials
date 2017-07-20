@@ -4,6 +4,9 @@ import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.item.EntityItem;
@@ -22,11 +25,34 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class PedestalBlock extends Block implements ITileEntityProvider {
+    // Used for visuals only
+    public static final IProperty<Boolean> IS_HANDLES = PropertyBool.create("is_handles");
 
     public PedestalBlock() {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".pedestalblock");
         setRegistryName("pedestalblock");
+        setDefaultState(blockState.getBaseState().withProperty(IS_HANDLES, false));
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        return state.withProperty(IS_HANDLES, false);
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, IS_HANDLES);
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        return getDefaultState();
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return 0;
     }
 
     @SideOnly(Side.CLIENT)
