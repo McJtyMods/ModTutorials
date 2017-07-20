@@ -59,14 +59,14 @@ public class PedestalTileEntity extends TileEntity {
         if (compound.hasKey("item")) {
             stack = new ItemStack(compound.getCompoundTag("item"));
         } else {
-            stack = null;
+            stack = ItemStack.EMPTY;
         }
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        if (stack != null) {
+        if (!stack.isEmpty()) {
             NBTTagCompound tagCompound = new NBTTagCompound();
             stack.writeToNBT(tagCompound);
             compound.setTag("item", tagCompound);

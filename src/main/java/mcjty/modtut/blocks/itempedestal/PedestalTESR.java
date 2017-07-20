@@ -72,7 +72,7 @@ public class PedestalTESR extends TileEntitySpecialRenderer<PedestalTileEntity> 
 
     private void renderItem(PedestalTileEntity te) {
         ItemStack stack = te.getStack();
-        if (stack != null) {
+        if (!stack.isEmpty()) {
             RenderHelper.enableStandardItemLighting();
             GlStateManager.enableLighting();
             GlStateManager.pushMatrix();
