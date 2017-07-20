@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 
 public class PedestalTileEntity extends TileEntity {
 
-    private ItemStack stack;
+    private ItemStack stack = ItemStack.EMPTY;
 
     public ItemStack getStack() {
         return stack;
