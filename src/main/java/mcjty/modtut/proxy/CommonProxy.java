@@ -77,6 +77,7 @@ public class CommonProxy {
         event.getRegistry().register(new DataBlock());
         event.getRegistry().register(new ModelBlock());
         event.getRegistry().register(new PedestalBlock());
+        event.getRegistry().register(new NLetterBlock());
 
         GameRegistry.registerTileEntity(BlinkingTileEntity.class, ModTut.MODID + "_blinkingblock");
         GameRegistry.registerTileEntity(TestContainerTileEntity.class, ModTut.MODID + "_testcontainerblock");
