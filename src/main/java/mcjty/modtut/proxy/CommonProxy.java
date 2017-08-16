@@ -78,7 +78,7 @@ public class CommonProxy {
         event.getRegistry().register(new ModelBlock());
         event.getRegistry().register(new PedestalBlock());
         event.getRegistry().register(new NLetterBlock());
-
+        event.getRegistry().register(new MyBlock());
         GameRegistry.registerTileEntity(BlinkingTileEntity.class, ModTut.MODID + "_blinkingblock");
         GameRegistry.registerTileEntity(TestContainerTileEntity.class, ModTut.MODID + "_testcontainerblock");
         GameRegistry.registerTileEntity(DataTileEntity.class, ModTut.MODID + "_datablock");
@@ -101,6 +101,7 @@ public class CommonProxy {
         event.getRegistry().register(new ItemBlock(ModBlocks.dataBlock).setRegistryName(ModBlocks.dataBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.modelBlock).setRegistryName(ModBlocks.modelBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.pedestalBlock).setRegistryName(ModBlocks.pedestalBlock.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(ModBlocks.myblock).setRegistryName(ModBlocks.myblock.getRegistryName()));
     }
 
 }
