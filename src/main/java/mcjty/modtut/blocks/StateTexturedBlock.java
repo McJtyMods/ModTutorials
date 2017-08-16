@@ -1,7 +1,7 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.CreativeTab;
 import mcjty.modtut.ModTut;
-import mcjty.modtut.MyNewTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -29,7 +29,7 @@ public class StateTexturedBlock extends Block {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".statetexturedblock");
         setRegistryName("statetexturedblock");
-        setCreativeTab(MyNewTab.modTab);
+        setCreativeTab(CreativeTab.tabMODTAB);
 
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }

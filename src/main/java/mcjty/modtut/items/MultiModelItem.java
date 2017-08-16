@@ -1,5 +1,6 @@
 package mcjty.modtut.items;
 
+import mcjty.modtut.CreativeTab;
 import mcjty.modtut.ModTut;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -21,6 +22,7 @@ public class MultiModelItem extends Item {
     public MultiModelItem() {
         setRegistryName("multimodelitem");
         setUnlocalizedName(ModTut.MODID + ".multimodelitem");
+        setCreativeTab(CreativeTab.tabMODTAB);
     }
 
     @SideOnly(Side.CLIENT)
