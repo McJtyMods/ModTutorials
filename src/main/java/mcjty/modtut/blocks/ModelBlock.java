@@ -1,6 +1,7 @@
 package mcjty.modtut.blocks;
 
 import mcjty.modtut.ModTut;
+import mcjty.modtut.MyNewTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,6 +20,7 @@ public class ModelBlock extends Block {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".modelblock");
         setRegistryName("modelblock");
+        setCreativeTab(MyNewTab.modTab);
     }
 
     @SideOnly(Side.CLIENT)

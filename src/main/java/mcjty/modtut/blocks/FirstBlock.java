@@ -1,6 +1,7 @@
 package mcjty.modtut.blocks;
 
 import mcjty.modtut.ModTut;
+import mcjty.modtut.MyNewTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -12,5 +13,7 @@ public class FirstBlock extends Block {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".firstblock");
         setRegistryName("firstblock");
+        setCreativeTab(MyNewTab.modTab);
+        
     }
 }
