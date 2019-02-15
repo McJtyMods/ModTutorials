@@ -2,7 +2,8 @@
   "forge_marker": 1,
   "defaults": {
     "custom": { "flip-v": true },
-    "model": "modtut:model.obj"
+    "model": "modtut:model.obj",
+    "transform": "forge:default-block"
   },
   "variants": {
     "normal": [{}],
