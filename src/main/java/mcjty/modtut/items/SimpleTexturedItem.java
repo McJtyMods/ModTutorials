@@ -1,5 +1,6 @@
 package mcjty.modtut.items;
 
+import mcjty.modtut.CreativeTab;
 import mcjty.modtut.ModTut;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -13,6 +14,7 @@ public class SimpleTexturedItem extends Item {
     public SimpleTexturedItem() {
         setRegistryName("simpletextureditem");
         setUnlocalizedName(ModTut.MODID + ".simpletextureditem");
+        setCreativeTab(CreativeTab.tabMODTAB);
     }
 
     @SideOnly(Side.CLIENT)

@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.CreativeTab;
 import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -15,6 +16,7 @@ public class SimpleTexturedBlock extends Block {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".simpletexturedblock");
         setRegistryName("simpletexturedblock");
+        setCreativeTab(CreativeTab.tabMODTAB);
     }
 
     @SideOnly(Side.CLIENT)

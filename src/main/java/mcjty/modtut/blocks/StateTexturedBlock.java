@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.CreativeTab;
 import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -28,6 +29,7 @@ public class StateTexturedBlock extends Block {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".statetexturedblock");
         setRegistryName("statetexturedblock");
+        setCreativeTab(CreativeTab.tabMODTAB);
 
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }

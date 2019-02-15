@@ -14,6 +14,9 @@ public class ModBlocks {
 
     @GameRegistry.ObjectHolder("modtut:firstblock")
     public static FirstBlock firstBlock;
+    
+    @GameRegistry.ObjectHolder("modtut:myblock")
+    public static MyBlock myblock;
 
     @GameRegistry.ObjectHolder("modtut:simpletexturedblock")
     public static SimpleTexturedBlock simpleTexturedBlock;

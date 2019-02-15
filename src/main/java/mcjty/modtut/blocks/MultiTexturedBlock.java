@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.CreativeTab;
 import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -25,6 +26,7 @@ public class MultiTexturedBlock extends Block {
         super(Material.ROCK);
         setUnlocalizedName(ModTut.MODID + ".multitexturedblock");
         setRegistryName("multitexturedblock");
+        setCreativeTab(CreativeTab.tabMODTAB);
 
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
